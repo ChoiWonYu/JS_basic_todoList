@@ -1,5 +1,4 @@
 # JS_basic_todoList
-# JS-basic
 ## Commit Convention
 
 | 헤더     | 내용                                                                  |
