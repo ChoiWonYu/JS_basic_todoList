@@ -6,18 +6,18 @@ const todoSelect = document.getElementById("todoSelect");
 let todoArr = [];
 let id = 0;
 
+const setTodo = (todos) => {
+  todoArr = todos;
+};
+const getTodoArr = () => {
+  return todoArr;
+};
+
 const addTodo = (todo) => {
-  todoArr = [
-    ...todoArr,
-    {
-      id: id++,
-      action: todo,
-      status: "Todo",
-    },
-  ];
+  setTodo(getTodoArr().concat({ id: id++, action: todo, status: "Todo" }));
 };
 const deleteTodo = (id) => {
-  todoArr = todoArr.filter((todo) => todo.id !== id);
+  setTodo(getTodoArr().filter((todo) => todo.id !== id));
   showTodo();
 };
 const doneTodo = (doneTodo) => {
@@ -25,15 +25,18 @@ const doneTodo = (doneTodo) => {
     ...doneTodo,
     status: "Done",
   };
-  todoArr = todoArr.filter((todo) => todo.id !== doneTodo.id);
-  todoArr = [...todoArr, newTodo];
+  setTodo(
+    getTodoArr()
+      .filter((todo) => todo.id !== doneTodo.id)
+      .concat(newTodo)
+  );
   showTodo();
 };
 
 const showTodo = () => {
   const select = todoSelect.value;
   todoList.innerHTML = null;
-  todoArr.forEach((todo) => {
+  getTodoArr().forEach((todo) => {
     if (select == todo.status) {
       const todoAction = document.createElement("li");
       const todoContainer = document.createElement("div");
