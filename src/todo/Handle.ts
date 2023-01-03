@@ -1,20 +1,37 @@
-import { storeTodo } from "../store";
-import { ITodo } from "./type/ITodo";
+import { ITodo, TodoStatus } from "./type/ITodo";
+import {
+  hideUnselectedTodo,
+  createTodoElement,
+  deleteTodoElement,
+} from "./Render";
+import { getTodo, setTodo } from "../store";
 
-let id = 1;
-const setTodo = (TodoList: ITodo[], newTodoList: ITodo[]) => {
-  TodoList = newTodoList;
-  storeTodo(TodoList);
+export const removeTodo = (id: number) => {
+  console.log(id);
+  setTodo(getTodo().filter((todo) => todo?.id !== id));
 };
 
-const addTodo = (TodoList: ITodo[], action: string) => {
+export const addTodo = (value: string | undefined) => {
+  if (!value) return null;
+  const id = Date.now();
   const newTodo: ITodo = {
     id,
-    action,
-    status: "TODO",
+    action: value,
+    status: TodoStatus.TODO,
   };
-  setTodo(TodoList, TodoList?.concat(newTodo));
-  id += 1;
+  getTodo().push(newTodo);
+  createTodoElement(newTodo);
+  hideUnselectedTodo();
 };
 
-const deleteTodo = () => {};
+export const doneTodo = (id: number) => {
+  const targetTodo = getTodo().filter((todo) => todo.id === id)[0];
+  removeTodo(id);
+  const newTodo = {
+    ...targetTodo,
+    status: TodoStatus.DONE,
+  };
+  getTodo().push(newTodo);
+  createTodoElement(targetTodo);
+  hideUnselectedTodo();
+};

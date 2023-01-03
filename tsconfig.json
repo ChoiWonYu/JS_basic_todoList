@@ -2,8 +2,10 @@
   "include": ["src"],
   "exclude": ["build", "node_modules"],
   "compilerOptions": {
+    // "module": "CommonJS",
     "outDir": "build",
-    "target": "es6",
+    "target": "esnext",
+    "module": "commonjs",
     "lib": ["es6", "DOM"],
     "moduleResolution": "node",
     "strict": true
