@@ -1,4 +1,4 @@
-import { ITodo } from "./todo/type/ITodo";
+import { ITodo } from "./todo/type/ITodo.js";
 
 export const TODO_KEY = "TODO_KEY";
 let TodoList: ITodo[] = [];
@@ -20,4 +20,9 @@ export const getTodo = (): ITodo[] => {
 
 export const setTodo = (newTodoList: ITodo[]) => {
   TodoList = newTodoList;
+  storeTodo(TodoList);
+};
+
+export const appendTodo = (newTodo: ITodo) => {
+  setTodo(TodoList.concat([newTodo]));
 };

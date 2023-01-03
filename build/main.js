@@ -1,11 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Handle_1 = require("./todo/Handle");
+import { getTodo, initialGetTodo, setTodo } from "./store.js";
+import { addTodo } from "./todo/Handle.js";
+import { showTodo } from "./todo/Render.js";
 const todoForm = document.getElementById("todoForm");
 const todoInput = document.getElementById("todoInput");
+const storedTodoList = initialGetTodo();
 const onSubmit = (event) => {
     event.preventDefault();
-    (0, Handle_1.addTodo)(todoInput?.value);
-    todoInput?.value && (todoInput.value = "");
+    addTodo(todoInput === null || todoInput === void 0 ? void 0 : todoInput.value);
+    (todoInput === null || todoInput === void 0 ? void 0 : todoInput.value) && (todoInput.value = "");
 };
-todoForm?.addEventListener("submit", onSubmit);
+todoForm === null || todoForm === void 0 ? void 0 : todoForm.addEventListener("submit", onSubmit);
+if (getTodo().length === 0 && storedTodoList) {
+    setTodo(storedTodoList);
+    showTodo();
+}

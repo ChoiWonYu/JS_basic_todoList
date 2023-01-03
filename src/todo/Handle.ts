@@ -1,17 +1,17 @@
-import { ITodo, TodoStatus } from "./type/ITodo";
+import { ITodo, TodoStatus } from "./type/ITodo.js";
 import {
   hideUnselectedTodo,
   createTodoElement,
   deleteTodoElement,
-} from "./Render";
-import { getTodo, setTodo } from "../store";
+} from "./Render.js";
+import { getTodo, setTodo, appendTodo } from "../store.js";
 
 export const removeTodo = (id: number) => {
-  console.log(id);
   setTodo(getTodo().filter((todo) => todo?.id !== id));
+  deleteTodoElement(id);
 };
 
-export const addTodo = (value: string | undefined) => {
+export const addTodo = (value: string) => {
   if (!value) return null;
   const id = Date.now();
   const newTodo: ITodo = {
@@ -19,7 +19,7 @@ export const addTodo = (value: string | undefined) => {
     action: value,
     status: TodoStatus.TODO,
   };
-  getTodo().push(newTodo);
+  appendTodo(newTodo);
   createTodoElement(newTodo);
   hideUnselectedTodo();
 };
@@ -31,7 +31,7 @@ export const doneTodo = (id: number) => {
     ...targetTodo,
     status: TodoStatus.DONE,
   };
-  getTodo().push(newTodo);
-  createTodoElement(targetTodo);
+  appendTodo(newTodo);
+  createTodoElement(newTodo);
   hideUnselectedTodo();
 };

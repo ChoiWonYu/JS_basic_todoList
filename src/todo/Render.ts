@@ -1,6 +1,6 @@
-import { ITodo } from "./type/ITodo";
-import { removeTodo, doneTodo } from "./Handle";
-import { getTodo } from "../store";
+import { ITodo } from "./type/ITodo.js";
+import { removeTodo, doneTodo } from "./Handle.js";
+import { getTodo } from "../store.js";
 const todoList = document.getElementById("todoList");
 const todoSelect = document.getElementById("todoSelect") as HTMLSelectElement;
 
@@ -44,4 +44,11 @@ const createTodo = (id: number) => {
   completeBtn.innerText = "✅";
 
   return completeBtn;
+};
+
+export const initTodo = () => {
+  getTodo().forEach((todo) => {
+    createTodoElement(todo);
+  });
+  hideUnselectedTodo();
 };

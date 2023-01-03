@@ -2,12 +2,13 @@
   "include": ["src"],
   "exclude": ["build", "node_modules"],
   "compilerOptions": {
-    // "module": "CommonJS",
     "outDir": "build",
-    "target": "esnext",
-    "module": "commonjs",
+    "target": "ES6",
+    "esModuleInterop": true,
     "lib": ["es6", "DOM"],
     "moduleResolution": "node",
-    "strict": true
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   }
 }

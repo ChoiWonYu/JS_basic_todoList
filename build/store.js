@@ -1,24 +1,21 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.setTodo = exports.getTodo = exports.initialGetTodo = exports.storeTodo = exports.TODO_KEY = void 0;
-exports.TODO_KEY = "TODO_KEY";
+export const TODO_KEY = "TODO_KEY";
 let TodoList = [];
-const storeTodo = (todo) => {
-    localStorage.setItem(exports.TODO_KEY, JSON.stringify(todo));
+export const storeTodo = (todo) => {
+    localStorage.setItem(TODO_KEY, JSON.stringify(todo));
 };
-exports.storeTodo = storeTodo;
-const initialGetTodo = () => {
-    const returnTodoList = localStorage.getItem(exports.TODO_KEY);
+export const initialGetTodo = () => {
+    const returnTodoList = localStorage.getItem(TODO_KEY);
     if (returnTodoList) {
         return JSON.parse(returnTodoList);
     }
 };
-exports.initialGetTodo = initialGetTodo;
-const getTodo = () => {
+export const getTodo = () => {
     return TodoList;
 };
-exports.getTodo = getTodo;
-const setTodo = (newTodoList) => {
+export const setTodo = (newTodoList) => {
     TodoList = newTodoList;
+    storeTodo(TodoList);
 };
-exports.setTodo = setTodo;
+export const appendTodo = (newTodo) => {
+    setTodo(TodoList.concat([newTodo]));
+};
