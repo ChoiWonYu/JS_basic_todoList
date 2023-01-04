@@ -1,4 +1,4 @@
-export const TODO_KEY = "TODO_KEY";
+import { TODO_KEY } from "./todo/type/consts.js";
 let TodoList = [];
 export const storeTodo = (todo) => {
     localStorage.setItem(TODO_KEY, JSON.stringify(todo));

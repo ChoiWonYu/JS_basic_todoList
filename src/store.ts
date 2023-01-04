@@ -1,6 +1,6 @@
 import { ITodo } from "./todo/type/ITodo.js";
+import { TODO_KEY } from "./todo/type/consts.js";
 
-export const TODO_KEY = "TODO_KEY";
 let TodoList: ITodo[] = [];
 
 export const storeTodo = (todo: ITodo[]) => {
