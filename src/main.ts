@@ -1,6 +1,6 @@
-import { getTodo, initialGetTodo, setTodo } from "./store.js";
-import { addTodo } from "./todo/Handle.js";
-import { initTodo } from "./todo/Render.js";
+import { getTodo, initialGetTodo, setTodo } from "./store";
+import { addTodo } from "./todo/Handle";
+import { initTodo } from "./todo/Render";
 const todoForm = document.getElementById("todoForm");
 const todoInput = document.getElementById("todoInput") as HTMLInputElement;
 

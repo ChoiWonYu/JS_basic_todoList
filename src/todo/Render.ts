@@ -1,7 +1,7 @@
-import { ITodo } from "./type/ITodo.js";
-import { removeTodo, doneTodo, updateTodo } from "./Handle.js";
-import { getTodo } from "../store.js";
-import { UPDATE_ID, TEXT_ID } from "./type/consts.js";
+import { ITodo } from "./type/ITodo";
+import { removeTodo, doneTodo, updateTodo } from "./Handle";
+import { getTodo } from "../store";
+import { UPDATE_ID, TEXT_ID } from "./type/consts";
 
 const todoList = document.getElementById("todoList");
 const todoSelect = document.getElementById("todoSelect") as HTMLSelectElement;

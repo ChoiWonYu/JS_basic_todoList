@@ -1,5 +1,5 @@
-import { ITodo } from "./todo/type/ITodo.js";
-import { TODO_KEY } from "./todo/type/consts.js";
+import { ITodo } from "./todo/type/ITodo";
+import { TODO_KEY } from "./todo/type/consts";
 
 let TodoList: ITodo[] = [];
 

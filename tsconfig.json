@@ -3,12 +3,15 @@
   "exclude": ["build", "node_modules"],
   "compilerOptions": {
     "outDir": "build",
-    "target": "ES6",
+    "module": "es6",
+    "target": "ES5",
     "esModuleInterop": true,
     "lib": ["es6", "DOM"],
     "moduleResolution": "node",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true
   }
 }

@@ -1,12 +1,12 @@
-import { ITodo, TodoStatus } from "./type/ITodo.js";
+import { ITodo, TodoStatus } from "./type/ITodo";
 import {
   hideUnselectedTodo,
   createTodoElement,
   deleteTodoElement,
   changeHidden,
-} from "./Render.js";
-import { getTodo, setTodo, appendTodo } from "../store.js";
-import { TEXT_ID } from "./type/consts.js";
+} from "./Render";
+import { getTodo, setTodo, appendTodo } from "../store";
+import { TEXT_ID } from "./type/consts";
 
 export const removeTodo = (id: number) => {
   setTodo(getTodo().filter((todo) => todo?.id !== id));
