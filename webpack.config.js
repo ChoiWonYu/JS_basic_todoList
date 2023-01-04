@@ -19,6 +19,7 @@ module.exports = {
       {
         test: /\.ts?$/,
         use: "ts-loader",
+        //loader를 통해 모든 ts 파일을 로드한다. js 파일로 변환
         exclude: /node_modules/,
       },
     ],
